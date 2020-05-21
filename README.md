@@ -1,3 +1,8 @@
+# My changes
+
+ - Support workspace label
+ - Use font awesome icon, so may not need the font for correct icon
+
 # nibar
 
 Simple [Übersicht](https://github.com/felixhageloh/uebersicht) widget status bar with [yabai](https://github.com/koekeishiya/yabai) support.
