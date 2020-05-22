@@ -1,4 +1,5 @@
 import Desktop from "./lib/Desktop.jsx";
+import DesktopStatus from "./lib/DesktopStatus.jsx";
 import Error from "./lib/Error.jsx";
 import parse from "./lib/parse.jsx";
 import styles from "./lib/styles.jsx";
@@ -40,6 +41,7 @@ export const render = ({ output }) => {
   }
   return (
     <div style={style}>
+      <DesktopStatus output={data} />
       <Desktop output={data.spaces_primary} />
     </div>
   );
