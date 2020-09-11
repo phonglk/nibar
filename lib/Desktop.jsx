@@ -1,5 +1,8 @@
 import styles from "./styles.jsx";
-import run from "uebersicht";
+import {run} from "uebersicht";
+
+const PATH="PATH=PATH:/usr/local/bin/"
+const yabai = message => run(`${PATH} yabai -m ${message}`)
 
 const containerStyle = {
   display: "grid",
@@ -12,7 +15,8 @@ const desktopStyle = {
   background: '#1c1c1c',
   height: '20px',
   padding: '0 5px',
-  lineHeight: '15px'
+  lineHeight: '15px',
+  cursor: 'pointer'
 };
 
 const selectedDesktopStyle = {
@@ -35,8 +39,20 @@ const renderSpace = ({index, focused, visible, windows, label}) => {
     ? <div>{label}<sup>{index}</sup></div>
     : <div style={{ lineHeight: '23px' }}>🖥️ {index}</div>
 
+    const onClick = async () => {
+      const focusConfig = (await yabai(`config mouse_follows_focus`)).toString().trim()
+      if (focusConfig == 'on') {
+        await yabai(`config mouse_follows_focus off`)
+        await yabai('config mouse_follows_focus')
+      }
+      await yabai(`space --focus ${index}`)
+      if (focusConfig==='on') {
+        await yabai(`config mouse_follows_focus on`)
+      }
+    }
+
   return (
-    <div style={focused ? selectedDesktopStyle : contentStyle}>
+    <div style={focused ? selectedDesktopStyle : contentStyle} onClick={onClick}>
       {labelVis}
     </div>
   );
