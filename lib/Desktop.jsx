@@ -41,18 +41,18 @@ const renderSpace = ({index, focused, visible, windows, label}) => {
 
     const onClick = async () => {
       const focusConfig = (await yabai(`config mouse_follows_focus`)).toString().trim()
-      if (focusConfig == 'on') {
-        await yabai(`config mouse_follows_focus off`)
-        await yabai('config mouse_follows_focus')
-      }
+      // if (focusConfig == 'on') {
+      //   await yabai(`config mouse_follows_focus off`)
+      //   await yabai('config mouse_follows_focus')
+      // }
       await yabai(`space --focus ${index}`)
-      if (focusConfig==='on') {
-        await yabai(`config mouse_follows_focus on`)
-      }
+      // if (focusConfig==='on') {
+      //   await yabai(`config mouse_follows_focus on`)
+      // }
     }
 
   return (
-    <div style={focused ? selectedDesktopStyle : contentStyle} onClick={onClick}>
+    <div style={focused ? selectedDesktopStyle : contentStyle} onClick={onClick} key={index}>
       {labelVis}
     </div>
   );

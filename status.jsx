@@ -30,6 +30,7 @@ export const command = "./nibar/scripts/status.sh";
 export const render = ({ output }) => {
   const data = parse(output);
   if (typeof data === "undefined") {
+    return null
     return (
       <div style={style}>
         <Error msg="Error: unknown script output" side="right" />

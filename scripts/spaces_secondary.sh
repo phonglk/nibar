@@ -8,7 +8,7 @@ if ! [ -x "$(command -v yabai)" ]; then
   exit 1
 fi
 
-SPACES_SECONDARY=$(yabai -m query --spaces --display 2)
+SPACES_SECONDARY=$(yabai -m query --spaces --display 3)
 
 echo $(cat <<-EOF
 {
